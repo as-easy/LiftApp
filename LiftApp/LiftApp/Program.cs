@@ -12,7 +12,7 @@ namespace LiftApp
     {
         static void Main(string[] args)
         {
-            Floors floors = new Floors();           
+            Floors floors = new Floors();
             Lift lift = new Lift(floors);
             Manage manage = new Manage(floors, lift);
 
@@ -28,7 +28,7 @@ namespace LiftApp
             LiftThread.Start();
             DisplayFunThread.Start();
 
-            Console.Read();            
-        }       
+            Console.Read();
+        }
     }
 }

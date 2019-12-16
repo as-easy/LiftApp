@@ -10,22 +10,22 @@ namespace LiftApp
     {
         public Floors.Floor CurrentFloor { get; set; }
         public Floors.Floor NeedFloor { get; set; }
-     
-        public People ()
-        {           
+
+        public People()
+        {
             Random rnd = new Random();
-            CurrentFloor = (Floors.Floor) rnd.Next((int)Floors.Floor.Start, (int)Floors.Floor.End+1);
+            CurrentFloor = (Floors.Floor)rnd.Next((int)Floors.Floor.Start, (int)Floors.Floor.End + 1);
 
             int[] temparr = new int[(int)Floors.Floor.End];
             int index = 0;
 
-            foreach(int e in Enum.GetValues(typeof(Floors.Floor)))
+            foreach (int e in Enum.GetValues(typeof(Floors.Floor)))
             {
-                if ((int) CurrentFloor == e) continue;
+                if ((int)CurrentFloor == e) continue;
                 temparr[index] = (int)e;
                 index++;
             }
-            NeedFloor = (Floors.Floor)temparr[rnd.Next(temparr.Length)]; 
+            NeedFloor = (Floors.Floor)temparr[rnd.Next(temparr.Length)];
         }
     }
 }

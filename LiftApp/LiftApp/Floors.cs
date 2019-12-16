@@ -8,12 +8,12 @@ using System.Threading;
 
 namespace LiftApp
 {
-    class Floors  
+    class Floors
     {
-        public enum Floor  { Start, Two, Three, Four, End }
+        public enum Floor { Start, Two, Three, Four, End }
 
-        public Dictionary<Floor,int> DeliveredPeople { get; set; }
-        public Queue<People>[] QueuePeopleOnFloor { get; set; }        
+        public Dictionary<Floor, int> DeliveredPeople { get; set; }
+        public Queue<People>[] QueuePeopleOnFloor { get; set; }
         public int SumDeliveredPeople { get; set; }
         public int SumQueuePeopleOnFloor { get; set; }
 
@@ -28,6 +28,6 @@ namespace LiftApp
                 QueuePeopleOnFloor[(int)e] = new Queue<People>();
                 DeliveredPeople.Add(e, 0);
             }
-        }        
+        }
     }
 }

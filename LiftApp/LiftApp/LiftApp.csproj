@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F42357E8-5099-431F-AF51-BD93FAA7B3E5}</ProjectGuid>
+    <ProjectGuid>{9E3D99C3-3D1C-4BEE-9F2B-FE31C94620F1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LiftApp</RootNamespace>
@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Floors.cs" />
     <Compile Include="Lift.cs" />
     <Compile Include="Manage.cs" />
     <Compile Include="People.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Floors.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

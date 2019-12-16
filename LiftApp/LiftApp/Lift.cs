@@ -11,7 +11,7 @@ namespace LiftApp
     {
         public Queue<People> PeopleInLift { get; set; }
         public Floors.Floor CurrentFloorLift { get; set; }
-        public Floors.Floor NeedFloorLift { get; set; }     
+        public Floors.Floor NeedFloorLift { get; set; }
         public Floors floors { get; set; }
 
         public Lift(Floors floors)

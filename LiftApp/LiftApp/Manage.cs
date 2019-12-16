@@ -23,7 +23,7 @@ namespace LiftApp
         }
 
         //Функция для вызова нового объекта People и занесения в очередь на конкретном этаже
-        public void AppearPeopleOnFloor()       
+        public void AppearPeopleOnFloor()
         {
             do
             {
@@ -63,10 +63,11 @@ namespace LiftApp
                     {
                         Thread.Sleep(_timerLift);
                         lift.PeopleInLift.Enqueue(floors.QueuePeopleOnFloor[(int)lift.CurrentFloorLift].Dequeue());
-                        floors.SumQueuePeopleOnFloor--;                        
+                        floors.SumQueuePeopleOnFloor--;
                     }
 
-                    lift.NeedFloorLift = lift.PeopleInLift.Peek().NeedFloor;
+                    if(lift.PeopleInLift.Count != 0)
+                      lift.NeedFloorLift = lift.PeopleInLift.Peek().NeedFloor;
                 }
                 else
                 {
