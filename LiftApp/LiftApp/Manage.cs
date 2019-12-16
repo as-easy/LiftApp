@@ -45,12 +45,13 @@ namespace LiftApp
                     {
 
                         Thread.Sleep(_timerLift);
-                        floors.DeliveredPeople[lift.PeopleInLift.Peek().NeedFloor]++;
+                        floors.DeliveredPeople[lift.PeopleInLift[0].NeedFloor]++;
+
                         floors.SumDeliveredPeople++;
-                        lift.PeopleInLift.Dequeue();
+                        lift.PeopleInLift.RemoveAt(0);
                         if (lift.PeopleInLift.Count() != 0) //проверка есть ли еще в лифте люди, которым нужно выйти на этом этаже
                         {
-                            lift.NeedFloorLift = lift.PeopleInLift.Peek().NeedFloor;
+                            lift.NeedFloorLift = lift.PeopleInLift[0].NeedFloor;
                             if (lift.NeedFloorLift == lift.CurrentFloorLift) continue;
                         }
                         else
@@ -62,12 +63,13 @@ namespace LiftApp
                     while (lift.PeopleInLift.Count() != CapacityLift && floors.QueuePeopleOnFloor[(int)lift.CurrentFloorLift].Count != 0)
                     {
                         Thread.Sleep(_timerLift);
-                        lift.PeopleInLift.Enqueue(floors.QueuePeopleOnFloor[(int)lift.CurrentFloorLift].Dequeue());
+                        lift.PeopleInLift.Add(floors.QueuePeopleOnFloor[(int)lift.CurrentFloorLift].Dequeue());
+                        
                         floors.SumQueuePeopleOnFloor--;
                     }
 
-                    if(lift.PeopleInLift.Count != 0)
-                      lift.NeedFloorLift = lift.PeopleInLift.Peek().NeedFloor;
+                    if (lift.PeopleInLift.Count != 0)
+                        lift.NeedFloorLift = lift.PeopleInLift[0].NeedFloor;
                 }
                 else
                 {
@@ -107,7 +109,11 @@ namespace LiftApp
             {
                 Console.Clear();
                 Console.WriteLine("Текущее местоположение лифта: " + ((int)lift.CurrentFloorLift + 1));
-                Console.WriteLine("Человеку в лифте надо на: " + ((lift.PeopleInLift.Count == 0) ? "" : ((int)lift.NeedFloorLift + 1).ToString()));
+                Console.Write("Каждому человеку в лифте надо на: ");
+                foreach (var people in lift.PeopleInLift)
+                    Console.Write("("+(lift.PeopleInLift.FindIndex(p => p == people)+1) + ")" + ((int)people.NeedFloor+1)+" ");
+                Console.WriteLine();
+                Console.WriteLine("Человеку в лифте надо на: " + ((lift.PeopleInLift.Count == 0) ? "" : ((int)lift.NeedFloorLift + 1).ToString()));                
                 Console.WriteLine("Количество человек в лифте: " + (lift.PeopleInLift.Count) + "\n");
 
                 foreach (Floors.Floor e in Enum.GetValues(typeof(Floors.Floor)))

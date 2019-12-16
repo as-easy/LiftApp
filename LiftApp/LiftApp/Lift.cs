@@ -8,15 +8,15 @@ using System.Threading;
 namespace LiftApp
 {
     class Lift
-    {
-        public Queue<People> PeopleInLift { get; set; }
+    {        
+        public List<People> PeopleInLift { get; set; }
         public Floors.Floor CurrentFloorLift { get; set; }
         public Floors.Floor NeedFloorLift { get; set; }
         public Floors floors { get; set; }
 
         public Lift(Floors floors)
         {
-            PeopleInLift = new Queue<People>();
+            PeopleInLift = new List<People>();
             CurrentFloorLift = Floors.Floor.Start;
             this.floors = floors;
         }
